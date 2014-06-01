@@ -52,17 +52,17 @@ int main( int _argc, char** _argv )
 	
 	// The 4-points at the input image	
 	vector<Point2f> origPoints;
-	origPoints.push_back( Point2f(0, height) );
-	origPoints.push_back( Point2f(width, height) );
-	origPoints.push_back( Point2f(width/2+30, 140) );
-	origPoints.push_back( Point2f(width/2-50, 140) );
+	origPoints.push_back( Point2f(0.0f, static_cast<float>(height)) );
+	origPoints.push_back( Point2f(static_cast<float>(width), static_cast<float>(height)) );
+	origPoints.push_back( Point2f(static_cast<float>(width)/2+30, 140.0f) );
+	origPoints.push_back( Point2f(static_cast<float>(width)/2-50, 140.0f) );
 
 	// The 4-points correspondences in the destination image
 	vector<Point2f> dstPoints;
-	dstPoints.push_back( Point2f(0, height) );
-	dstPoints.push_back( Point2f(width, height) );
-	dstPoints.push_back( Point2f(width, 0) );
-	dstPoints.push_back( Point2f(0, 0) );
+	dstPoints.push_back( Point2f(0.0f, static_cast<float>(height)) );
+	dstPoints.push_back( Point2f(static_cast<float>(width), static_cast<float>(height)) );
+	dstPoints.push_back( Point2f(static_cast<float>(width), 0.0f) );
+	dstPoints.push_back( Point2f(0.0f, 0.0f) );
 		
 	// IPM object
 	IPM ipm( Size(width, height), Size(width, height), origPoints, dstPoints );
