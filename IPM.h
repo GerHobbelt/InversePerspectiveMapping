@@ -1,3 +1,22 @@
+/*
+ * (C) Copyright 2010-2014 - Marcos Nieto
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Lesser General Public License
+ * (LGPL) version 2.1 which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/lgpl-2.1.html
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * Contributors:
+ *     Marcos Nieto 
+ *			 marcos dot nieto dot doncel at gmail dot com
+ *			 Homepage: http://marcosnietoblog.wordpress.com
+ */
+
 #ifndef __IPM_H__
 #define __IPM_H__
 
