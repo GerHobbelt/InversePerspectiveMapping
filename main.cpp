@@ -65,7 +65,7 @@ int main( int _argc, char** _argv )
 	dstPoints.push_back( Point2f(static_cast<float>(width), static_cast<float>(height)) );
 	dstPoints.push_back( Point2f(static_cast<float>(width), 0.0f) );
 	dstPoints.push_back( Point2f(0.0f, 0.0f) );
-		
+	
 	// IPM object
 	IPM ipm( Size(width, height), Size(width, height), origPoints, dstPoints );
 	
@@ -95,6 +95,30 @@ int main( int _argc, char** _argv )
 		 double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
 		 printf("%.2f (ms)\r", 1000*elapsed_secs);
 		 ipm.drawPoints(origPoints, inputImg );
+		 
+		 // ++++++++++++++++++++++++++++++++++++++++++++++
+		 // Draw something on the IPM view
+		 vector<Point> square;
+		 square.push_back( Point(width/3, 2*height/3) );
+		 square.push_back( Point(2*width/3, 2*height/3) );
+		 square.push_back( Point(2*width/3, height/3) );
+		 square.push_back( Point(width/3, height/3) );
+		 vector<vector<Point> > vect;
+		 vect.push_back(square);
+		 cv::fillPoly(outputImg, vect, CV_RGB(255,255,255));
+
+		 // Apply back
+		 vector<Point> squareInv;
+		 for(size_t i=0; i<square.size(); ++i)
+		 {
+			 Point2d point(square[i].x, square[i].y);
+			 Point2d origPoint = ipm.applyHomographyInv( point );
+			 squareInv.push_back( Point( origPoint.x, origPoint.y ) );
+		 }
+		 vector<vector<Point> > vectOrig;
+		 vectOrig.push_back(squareInv);
+		 cv::fillPoly(inputImg, vectOrig, CV_RGB(255,255,255));
+		 // ++++++++++++++++++++++++++++++++++++++++++++++
 
 		 // View		
 		 imshow("Input", inputImg);
