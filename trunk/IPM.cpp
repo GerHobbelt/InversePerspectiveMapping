@@ -59,8 +59,8 @@ void IPM::applyHomography(const Mat& _inputImg, Mat& _dstImg, int _borderMode)
 }
 void IPM::applyHomographyInv(const Mat& _inputImg, Mat& _dstImg, int _borderMode)
 {
-	// Generate IPM image from src
-	remap(_inputImg, _dstImg, m_mapX, m_mapY, INTER_LINEAR, _borderMode);//, BORDER_CONSTANT, Scalar(0,0,0,0));
+	// Generate src from IPM
+	remap(_inputImg, _dstImg, m_invMapX, m_invMapY, INTER_LINEAR, _borderMode);//, BORDER_CONSTANT, Scalar(0,0,0,0));
 }
 Point2d IPM::applyHomography( const Point2d& _point )
 {
