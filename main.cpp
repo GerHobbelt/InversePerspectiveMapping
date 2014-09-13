@@ -90,7 +90,7 @@ int main( int _argc, char** _argv )
 
 		 // Process
 		 clock_t begin = clock();
-		 ipm.applyHomography( inputImg, outputImg );		 
+		 ipm.applyHomography( inputImg, outputImg );			
 		 clock_t end = clock();
 		 double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
 		 printf("%.2f (ms)\r", 1000*elapsed_secs);
@@ -108,6 +108,12 @@ int main( int _argc, char** _argv )
 		 cv::fillPoly(outputImg, vect, CV_RGB(255,255,255));
 
 		 // Apply back
+		 // On image
+		  Mat backProjection;
+		 ipm.applyHomographyInv( outputImg, backProjection );
+		 imshow("backProjection", backProjection);
+
+		 // On points
 		 vector<Point> squareInv;
 		 for(size_t i=0; i<square.size(); ++i)
 		 {
